@@ -8,7 +8,7 @@ Refer to the [documentation](https://lazyvim.github.io/installation) for more in
 To install this for your neovim configuration
 
 ```sh
-git clone https://github.com/sd3g14/nvim-config.git ~/.config/nvim
+git clone https://github.com/sdruc-monolith/nvim-config.git ~/.config/nvim
 ```
 
 Then open up neovim and let everything install.

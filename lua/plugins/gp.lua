@@ -10,6 +10,29 @@ return {
   config = function()
     local conf = {
       openai_api_key = os.getenv("OPENAI_API_KEY"),
+
+      agents = {
+        {
+          provider = "openai",
+          name = "ChatGPT5",
+          chat = true,
+          command = false,
+          -- string with model name or table with model name and parameters
+          model = { model = "gpt-5" },
+          -- system prompt (use this to specify the persona/role of the AI)
+          system_prompt = require("gp.defaults").chat_system_prompt,
+        },
+        {
+          provider = "openai",
+          name = "GPT5-mini",
+          chat = false,
+          command = true,
+          -- string with model name or table with model name and parameters
+          model = { model = "gpt-5-mini" },
+          -- system prompt (use this to specify the persona/role of the AI)
+          system_prompt = require("gp.defaults").code_system_prompt,
+        },
+      },
     }
     require("gp").setup(conf)
 

@@ -4,8 +4,8 @@
 
 local map = vim.keymap.set
 -- Comment
-map("n", "<A-/>", "gcc", { desc = "toggle comment", remap = true })
-map("v", "<A-/>", "gc", { desc = "toggle comment", remap = true })
+map("n", "<m-/>", "gcc", { desc = "toggle comment", remap = true })
+map("v", "<m-/>", "gc", { desc = "toggle comment", remap = true })
 
 -- nvimtree
 map("n", "<C-n>", "<cmd>Neotree toggle<CR>", { desc = "nvimtree toggle window" })
@@ -14,6 +14,8 @@ map("n", "<leader>e", "<cmd>Neotree<CR>", { desc = "nvimtree focus window", rema
 -- buffers
 map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "go to next buffer" })
 map("n", "<S-Tab>", "<cmd>bprevious<cr>", { desc = "go to next buffer" })
+
+map("n", "[p", "<CMD>call search('[(]', 'bW')<CR>b", { desc = "go to calling function", remap = true })
 
 -- local harpoon = require("harpoon")
 --
