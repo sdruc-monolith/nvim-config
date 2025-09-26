@@ -1,8 +1,11 @@
 return {
+  { "luisiacc/gruvbox-baby", enabled = false },
+  { "ellisonleao/gruvbox.nvim", enabled = false },
+  { "sainnhe/gruvbox-material", enabled = true },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "gruvbox-material",
     },
   },
 

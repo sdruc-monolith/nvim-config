@@ -10,7 +10,8 @@ return {
   config = function()
     local conf = {
       openai_api_key = os.getenv("OPENAI_API_KEY"),
-
+      default_command_agent = "ChatGPT5",
+      default_chat_agent = "GPT5-mini",
       agents = {
         {
           provider = "openai",
