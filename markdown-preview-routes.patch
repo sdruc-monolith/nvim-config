@@ -1,0 +1,34 @@
+diff --git a/app/pages/index.jsx b/app/pages/index.jsx
+index ebc89ba..4002182 100644
+--- a/app/pages/index.jsx
++++ b/app/pages/index.jsx
+@@ -123 +123 @@ export default class PreviewPage extends React.Component {
+-    window.history.replaceState(null, '', `/${bufnr}`)
++    window.history.replaceState(null, '', `/page/${bufnr}`)
+diff --git a/app/routes.js b/app/routes.js
+index 63d3a9a..7027e38 100644
+--- a/app/routes.js
++++ b/app/routes.js
+@@ -18,0 +19,22 @@ use((req, res, next) => {
++// Preserve compatibility with clients that rewrote /page/:number to /:number.
++use((req, res, next) => {
++  const match = req.asPath.match(/^\/(\d+)\/?$/)
++  if (match) {
++    res.statusCode = 302
++    res.setHeader('Location', `/page/${match[1]}`)
++    return res.end()
++  }
++  next()
++})
++
++// Redirect the server root to the current buffer's preview.
++use(async (req, res, next) => {
++  if (req.asPath === '/') {
++    const bufnr = await req.plugin.nvim.call('bufnr', '%')
++    res.statusCode = 302
++    res.setHeader('Location', `/page/${bufnr}`)
++    return res.end()
++  }
++  next()
++})
++
